@@ -1,0 +1,41 @@
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+  position: relative;
+  min-height: 48px;
+}
+
+h1 {
+  color: #1976d2;
+  margin: 0 auto;
+  flex: 0 0 auto;
+  text-align: center;
+  width: 100%;
+}
+
+.logout-btn {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  border-radius: 8px;
+  padding: 0.2rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 5rem;
+}
+
+.logout-btn svg {
+  display: block;
+}
+
+.logout-btn:hover {
+  background: #fdecea;
+}

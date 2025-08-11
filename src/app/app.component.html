@@ -1,0 +1,12 @@
+<div class="app-header">
+    <h1>{{ title }}</h1>
+    <span class="header-spacer"></span>
+    <button *ngIf="showLogout" class="logout-btn" (click)="logout()" title="Sair">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+            <rect x="3" y="3" width="14" height="18" rx="3" stroke="#e53935" stroke-width="2" />
+            <path d="M16 12H21M21 12L19 10M21 12L19 14" stroke="#e53935" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+        </svg>
+    </button>
+</div>
+<router-outlet></router-outlet>
