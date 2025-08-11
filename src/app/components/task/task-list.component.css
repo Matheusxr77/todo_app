@@ -1,0 +1,345 @@
+body {
+  font-family: 'Roboto', Arial, sans-serif;
+  background: #f5f6fa;
+}
+
+.task-list-container {
+  max-width: 600px;
+  margin: 3rem auto;
+  padding: 2.5rem 2rem 2rem 2rem;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 6px 32px rgba(60,64,67,0.07), 0 1.5px 6px rgba(60,64,67,0.04);
+  position: relative;
+}
+
+.task-list-container h2 {
+  text-align: center;
+  color: #1976d2;
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  letter-spacing: 0.5px;
+}
+
+.new-task-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 2rem;
+}
+
+.new-task-row button {
+  background: #1976d2;
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  font-weight: 500;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(25,118,210,0.08);
+  transition: background 0.2s;
+}
+
+.new-task-row button:hover {
+  background: #125ea2;
+}
+
+.add-btn {
+  background: none;
+  border: none;
+  border-radius: 50%;
+  padding: 0;
+  cursor: pointer;
+  transition: box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(25,118,210,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.add-btn svg {
+  display: block;
+}
+
+.add-btn:hover {
+  box-shadow: 0 4px 16px rgba(25,118,210,0.15);
+  background: #e3f2fd;
+}
+
+.clean-task-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.clean-task-list li {
+  display: flex;
+  align-items: center;
+  background: #f7f8fa;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  box-shadow: 0 1px 4px rgba(60,64,67,0.04);
+  padding: 0.7rem 1rem;
+  transition: box-shadow 0.2s, background 0.2s;
+  position: relative;
+}
+
+.clean-task-list li:hover {
+  box-shadow: 0 4px 16px rgba(60,64,67,0.10);
+  background: #e9ecf3;
+}
+
+.clean-task-list li.done .task-desc {
+  color: #bdbdbd;
+  text-decoration: line-through;
+}
+
+.clean-task-list li:last-child {
+  margin-bottom: 0;
+}
+
+.circle-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid #b0b7c3;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+  cursor: pointer;
+  transition: border 0.2s, background 0.2s;
+  position: relative;
+}
+
+.circle-btn:hover {
+  border-color: #4a6fa5;
+  background: #e3f2fd;
+}
+
+.circle-btn.checked {
+  border-color: #5cb85c;
+  background: #5cb85c;
+}
+
+.checkmark {
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.task-desc {
+  flex: 1;
+  font-size: 1.08rem;
+  color: #333;
+  cursor: pointer;
+  transition: color 0.2s;
+  margin-right: 1rem;
+  user-select: none;
+}
+
+.task-desc[title]:hover::after,
+.icon-btn[title]:hover::after,
+.circle-btn[title]:hover::after,
+.task-priority[title]:hover::after {
+  content: attr(title);
+  position: absolute;
+  bottom: -2.2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 0.25rem 0.7rem;
+  border-radius: 6px;
+  font-size: 0.92rem;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0.95;
+  z-index: 10;
+}
+
+.task-priority {
+  font-size: 0.95rem;
+  color: #7b8ca7;
+  background: #e9ecf3;
+  border-radius: 8px;
+  padding: 0.2rem 0.7rem;
+  margin-right: 1rem;
+  font-weight: 500;
+}
+
+.task-priority.priority-alta {
+  background: #fdecea;
+  color: #d32f2f;
+  border: 1px solid #f8bbbc;
+}
+
+.task-priority.priority-media {
+  background: #fff4e5;
+  color: #f9a825;
+  border: 1px solid #ffe0b2;
+}
+
+.task-priority.priority-baixa {
+  background: #eafaf1;
+  color: #43a047;
+  border: 1px solid #b2dfdb;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  margin-right: 0.1rem;
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s;
+  position: relative;
+}
+
+.icon-btn:focus {
+  outline: none;
+  background: #e9ecf3;
+}
+
+.icon-btn:hover {
+  background: #fbe9e7;
+}
+
+.delete-btn {
+  color: #e53935;
+}
+
+.delete-btn:hover {
+  color: #b71c1c;
+}
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(60,64,67,0.10);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: #fff;
+  padding: 2.5rem 2rem;
+  border-radius: 16px;
+  min-width: 340px;
+  box-shadow: 0 6px 32px rgba(60,64,67,0.13);
+  position: relative;
+}
+
+.modal-title {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #1976d2;
+}
+
+.modal input,
+.modal select {
+  width: 100%;
+  padding: 0.7rem;
+  margin-top: 0.7rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1.08rem;
+  background: #f8fafc;
+  transition: border 0.2s;
+  box-sizing: border-box;
+}
+
+.modal input:focus,
+.modal select:focus {
+  border-color: #1976d2;
+  background: #e3f2fd;
+  outline: none;
+}
+
+.priority-group {
+  margin-top: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.priority-group label {
+  font-weight: 500;
+  color: #1976d2;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.7rem;
+  margin-top: 2rem;
+}
+
+.modal-actions button[type="submit"] {
+  background: #1976d2;
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  padding: 0.7rem 1.6rem;
+  font-weight: 500;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.modal-actions button[type="submit"]:hover {
+  background: #125ea2;
+}
+
+.modal-actions button[type="button"] {
+  background: #bbb;
+  color: #222;
+  border: none;
+  border-radius: 50px;
+  padding: 0.7rem 1.6rem;
+  font-weight: 500;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.modal-actions button[type="button"]:hover {
+  background: #888;
+}
+
+.success-toast {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  background: #5cb85c;
+  color: #fff;
+  padding: 0.7rem 1.3rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(67,160,71,0.10);
+  font-size: 1rem;
+  z-index: 9999;
+  animation: fadein 0.3s, fadeout 0.5s 3s;
+}
+
+@keyframes fadein {
+  from { opacity: 0; transform: translateY(-20px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+@keyframes fadeout {
+  from { opacity: 1;}
+  to { opacity: 0;}
+}
