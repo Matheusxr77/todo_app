@@ -1,0 +1,60 @@
+<div class="task-list-container">
+  <h2>Minhas Tarefas</h2>
+  <div class="new-task-row">
+    <button class="add-btn" (click)="openModal('create')" title="Adicionar nova tarefa">
+      <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
+        <circle cx="12" cy="12" r="11" fill="#1976d2"/>
+        <path d="M12 7V17M7 12H17" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
+  <ul class="clean-task-list">
+    <li *ngFor="let task of tasks" [class.done]="task.status === 'concluida'">
+      <span class="circle-btn" 
+            [class.checked]="task.status === 'concluida'"
+            (click)="markAsDone(task)" 
+            [title]="task.status === 'concluida' ? 'Concluída' : 'Concluir'">
+        <span *ngIf="task.status === 'concluida'" class="checkmark">&#10003;</span>
+      </span>
+      <span class="task-desc" (click)="openModal('edit', task)" [title]="'Editar'">
+        {{ task.description }}
+      </span>
+      <span class="task-priority"
+        [ngClass]="{
+          'priority-baixa': task.priority === 'Baixa',
+          'priority-media': task.priority === 'Média',
+          'priority-alta': task.priority === 'Alta'
+        }"
+      >{{ task.priority }}</span>
+      <span class="icon-btn delete-btn" (click)="deleteTask(task)" title="Excluir">&#10005;</span>
+    </li>
+  </ul>
+
+  <div class="modal-backdrop" *ngIf="modalOpen">
+    <div class="modal">
+      <h3 class="modal-title">{{ modalMode === 'create' ? 'Criar Tarefa' : 'Editar Tarefa' }}</h3>
+      <form (ngSubmit)="saveTask()">
+        <label for="modal-description">Descrição</label>
+        <input id="modal-description" [(ngModel)]="modalTask.description" name="modalDescription" required
+          [ngModelOptions]="{standalone: true}">
+        <div class="priority-group">
+          <label for="modal-priority">Prioridade</label>
+          <select id="modal-priority" [(ngModel)]="modalTask.priority" name="modalPriority" required [ngModelOptions]="{standalone: true}">
+            <option value="" disabled selected>Selecione</option>
+            <option value="Baixa">Baixa</option>
+            <option value="Média">Média</option>
+            <option value="Alta">Alta</option>
+          </select>
+        </div>
+        <div class="modal-actions">
+          <button type="submit">{{ modalMode === 'create' ? 'Criar' : 'Salvar' }}</button>
+          <button type="button" (click)="closeModal()">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div *ngIf="successMessage" class="success-toast">
+    {{ successMessage }}
+  </div>
+</div>

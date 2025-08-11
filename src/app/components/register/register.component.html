@@ -1,0 +1,43 @@
+<div class="register-container">
+  <h2>Cadastro de Usuário</h2>
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" novalidate>
+    <label for="name">Nome</label>
+    <input id="name" formControlName="name" required>
+    <div class="error" *ngIf="submitted && f['name'].errors">
+      <span *ngIf="f['name'].errors['required']">Nome é obrigatório.</span>
+      <span *ngIf="f['name'].errors['minlength']">Nome deve ter pelo menos 3 caracteres.</span>
+    </div>
+
+    <label for="email">E-mail</label>
+    <input id="email" formControlName="email" required>
+    <div class="error" *ngIf="submitted && f['email'].errors">
+      <span *ngIf="f['email'].errors['required']">E-mail é obrigatório.</span>
+      <span *ngIf="f['email'].errors['email']">E-mail inválido.</span>
+    </div>
+
+    <label for="password">Senha</label>
+    <input id="password" type="password" formControlName="password" required (input)="onPasswordInput($event)"
+      (focus)="showPasswordReq = true" (blur)="showPasswordReq = false">
+    <div class="error" *ngIf="submitted && f['password'].errors">
+      <span *ngIf="f['password'].errors['required']">Senha é obrigatória.</span><br>
+      <span *ngIf="f['password'].errors['minlength']">Senha deve ter pelo menos 8 caracteres.</span>
+      <span *ngIf="f['password'].errors['passwordInvalid']">Senha não atende aos requisitos abaixo.</span>
+    </div>
+    <ul class="password-requirements" *ngIf="showPasswordReq">
+      <li [class.invalid]="!passwordMinLength">Mínimo de 8 caracteres</li>
+      <li [class.invalid]="!passwordHasUpper">Ao menos uma letra maiúscula</li>
+      <li [class.invalid]="!passwordHasLower">Ao menos uma letra minúscula</li>
+      <li [class.invalid]="!passwordHasNumber">Ao menos um número</li>
+      <li [class.invalid]="!passwordHasSpecial">Ao menos um caractere especial</li>
+    </ul>
+
+    <button type="submit">Cadastrar</button>
+  </form>
+  <div class="account-link">
+    <span>Já tem uma conta?</span>
+    <button type="button" (click)="goToLogin()" class="button">Login</button>
+  </div>
+  <div *ngIf="successMessage" [class]="successMessage.startsWith('Erro') ? 'success-toast error' : 'success-toast'">
+    {{ successMessage }}
+  </div>
+</div>
