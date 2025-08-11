@@ -1,0 +1,144 @@
+.register-container {
+  max-width: 370px;
+  margin: 3rem auto;
+  padding: 2.2rem 1.5rem 1.5rem 1.5rem;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 6px 32px rgba(60,64,67,0.07), 0 1.5px 6px rgba(60,64,67,0.04);
+  position: relative;
+}
+
+.register-container h2 {
+  text-align: center;
+  color: #1976d2;
+  font-size: 1.45rem;
+  font-weight: 600;
+  margin-bottom: 1.2rem;
+  letter-spacing: 0.3px;
+}
+
+.register-container label {
+  display: block;
+  margin-top: 1.1rem;
+  font-weight: 500;
+  color: #1976d2;
+}
+
+.register-container input {
+  width: 100%;
+  padding: 0.7rem;
+  margin-top: 0.5rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-sizing: border-box;
+  font-size: 1.08rem;
+  background: #f7f8fa;
+  transition: border 0.2s;
+}
+
+.register-container input:focus {
+  border-color: #1976d2;
+  background: #e3f2fd;
+  outline: none;
+}
+
+.register-container .error {
+  color: #e53935;
+  margin-top: 1rem;
+  text-align: center;
+  background: #fdecea;
+  border-radius: 8px;
+  padding: 0.6rem 0.8rem;
+  font-size: 1rem;
+  box-shadow: 0 1px 4px rgba(229,57,53,0.07);
+}
+
+.register-container button[type="submit"] {
+  width: 100%;
+  margin-top: 1.7rem;
+  padding: 0.8rem 0;
+  background: #1976d2;
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.08rem;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(25,118,210,0.08);
+  transition: background 0.2s;
+}
+
+.register-container button[type="submit"]:hover {
+  background: #125ea2;
+}
+
+.password-requirements {
+  list-style: none;
+  padding-left: 0;
+  margin: 0.5rem 0 0 0;
+  font-size: 0.95rem;
+}
+
+.password-requirements li {
+  color: #d32f2f;
+  margin-bottom: 2px;
+}
+
+.password-requirements li:not(.invalid) {
+  color: #388e3c;
+}
+
+.password-requirements li.invalid {
+  color: #d32f2f;
+}
+
+.account-link {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+.button {
+  margin-left: 0.5rem;
+  background: none;
+  border: none;
+  color: #1976d2;
+  font-size: 1.08rem;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 50px;
+  padding: 0.5rem 1.2rem;
+  transition: background 0.2s, color 0.2s;
+}
+
+.button:hover {
+  background: #e3f2fd;
+  color: #125ea2;
+}
+
+.success-toast {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  background: #43a047;
+  color: #fff;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(67,160,71,0.15);
+  font-size: 1.1rem;
+  z-index: 9999;
+  animation: fadein 0.3s, fadeout 0.5s 3s;
+}
+
+.success-toast .error {
+  background: #e53935;
+}
+
+@keyframes fadein {
+  from { opacity: 0; transform: translateY(-20px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+
+@keyframes fadeout {
+  from { opacity: 1;}
+  to { opacity: 0;}
+}
